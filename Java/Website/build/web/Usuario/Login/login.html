@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+                
+        <div><center><font size="5">Page of Login/Register</font></center></div>
+        <hr>
+        <a href="">Register</a>
+        <a href="">Register my Business</a>
+        
+        <br /><br />
+        
+        <form name="salvarproduto" action="${pageContext.request.contextPath}/SalvarProduto" method="POST">
+            <table border="0">
+                <tbody>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td><input type="text" name="email" size="70" placeholder="Insert your email..." required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="senha" size="70" placeholder="Insert your password..." required="true"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" value="Enviar" name="enviar" />
+        </form>
+        <h2>${response}</h2>
+        
+    </body>
+</html>

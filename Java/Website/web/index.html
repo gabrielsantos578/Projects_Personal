@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Website</title>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <div><center><font size="5">Web Site</font></center></div>
+
+        <a href="">Buscar Lojas</a>
+        <a href=""></a>
+        <a href="Usuario/login.html">Login</a>
+        
+        <br />
+        <hr>
+        <br />
+        
+        <form name="salvarproduto" action="${pageContext.request.contextPath}/ConsultarProduto" method="POST">
+            <table border="0">
+                <tbody>
+                    
+                    <tr>
+                        <td><input type="text" name="value" size="70" placeholder="Digite aqui o que deseja pesquisar..."/></td>
+                        
+                        <td>
+                            <select name="condition" id="condition">
+                                <option value="nomeProduto">Nome do Produto</option>
+                                <option value="descricaoProduto">Descrição do Produto</option>
+                                <option value="codigoCategoria">Categoria do Produto</option>
+                                <option value="codigoMarca">Marca do Produto</option>
+                                <option value="precoProduto">Preço do Produto</option>
+                                <option value="quantidadeEstoque">Quantidade em Estoque do Produto</option>
+                            </select>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <select name="atributte" id="atributte">
+                                <option value="">Ordenar por...</option>
+                                <option value="nomeProduto">Nome do Produto</option>
+                                <option value="descricaoProduto">Descrição do Produto</option>
+                                <option value="codigoCategoria">Categoria do Produto</option>
+                                <option value="codigoMarca">Marca do Produto</option>
+                                <option value="precoProduto">Preço do Produto</option>
+                                <option value="quantidadeEstoque">Quantidade em Estoque do Produto</option>
+                            </select>
+                            <select name="order" id="order" >
+                                <option value="asc">Crescente</option>
+                                <option value="desc">Descrecente</option>
+                            </select>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <input type="submit" value="Pesquisar" name="pesquisar" />
+        </form>
+
+        <br /><br /><br />
+
+        <table align="center" border="1">
+            <thead>
+                <tr>
+                    <th>Código:</th>
+                    <th>Nome:</th>
+                    <th>Preço:</th>
+                    <th>Estoque:</th>
+                    <th>Descrição:</th>
+                    <th>Data Fabricação:</th>
+                    <th>Lote:</th>
+                    <th>Marca:</th>
+                    <th>Categoria:</th>
+                    <th colspan="2">Editar</th>
+                </tr>    
+            </thead>
+            <tbody>
+                <c:forEach var="produto" items="${produtos}">
+                    <tr>
+                        <td>${produto.codigoProduto}</td>
+                        <td>${produto.nomeProduto}</td>
+                        <td>${produto.precoProduto}</td> 
+                        <td>${produto.quantidadeEstoque}</td> 
+                        <td>${produto.descricaoProduto}</td>
+                        <td>${produto.dataFabricacao}</td>
+                        <td>${produto.loteProduto}</td> 
+                        <td>${produto.marca.nomeMarca}</td> 
+                        <td>${produto.categoria.nomeCategoria}</td> 
+                        <td><a href="${pageContext.request.contextPath}/CarregarProduto?idproduto=${produto.codigoProduto}"><center>Alterar</a></td>
+                        <td><a href="${pageContext.request.contextPath}/ExcluirProduto?idproduto=${produto.codigoProduto}"><center>Excluir</a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        
+    </body>
+</html>
